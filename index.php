@@ -23,7 +23,7 @@
                 <p id="PasswordP">Пароль</p>
                 <input id="PasswordInput" type="password">
             </div>
-            <a href="organization.php"><button>Войти</button></a>
+            <a href="people.php"><button>Войти</button></a>
         </div>
         <p>©2024 Name. Все права защищены.</p>
     </div>
