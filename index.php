@@ -25,7 +25,7 @@
             </div>
             <a href="organization.php"><button>Войти</button></a>
         </div>
-        <p>©2022 Name. Все права защищены.</p>
+        <p>©2024 Name. Все права защищены.</p>
     </div>
 
 </body>
