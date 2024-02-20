@@ -467,10 +467,10 @@ h1 {
 
 
 .points_table {
-  height: 35px;
+  min-height: 35px;
   margin-top: min(2vw, 32px);
   display: grid;
-  grid-template-columns: 0.3fr  0.3fr repeat(2, 1fr) 0.3fr;
+  grid-template-columns: 0.2fr 0.2fr repeat(3, 0.8fr) 1fr;
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
@@ -521,9 +521,15 @@ h1 {
   color: #ffff;
 }
 
+#point_table_two > p > span{
+  font-family: "InterRegular";
+  font-size: min(1vw, 16px);
+}
 
-.point_table_settings {
-  width: 108px;
+#point_table_two > p{
+  font-family: "InterRegular";
+  font-size: min(1.3vw, 20px);
+  color: #34B17D;
 }
 
 .point_table_one>button {
@@ -547,6 +553,59 @@ h1 {
 
 #points_table {
   margin-top: 110px;
+}
+
+#point_table_three>div {
+  display: flex;
+  flex-direction: column;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#point_table_three > p{
+  font-size: min(1.4vw, 20px);
+  font-family: "InterRegular";
+  text-align: center;
+}
+
+#point_table_three > p >span{
+  font-size: min(1vw, 16px);
+  color: #AFAFAF;
+  font-family: "InterRegular";
+}
+
+#point_table_three button{
+    width: min(11vw, 178px);
+    height: min(2.3vw, 39px);
+    background-color: #34B17D;
+    color: #fff;
+    font-family: "InterRegular";
+    font-size: min(0.8vw, 12px);
+    border-radius: min(3.9vw, 60px);
+    outline: none;
+    margin-right: min(1vw, 10px);
+}
+
+.actions_order{
+  display: flex;
+  justify-content: space-around;
+}
+
+.actions_order button{
+  width: min(11vw, 178px);
+  height: min(2.3vw, 39px);
+  background-color: #34B17D;
+  color: #fff;
+  font-family: "InterRegular";
+  font-size: min(0.8vw, 12px);
+  border-radius: min(3.9vw, 60px);
+  outline: none;
+  margin-right: min(1vw, 10px);
+}
+
+.actions_order button:last-child{
+  background-color: #B13C34;
 }
 
 
@@ -655,10 +714,9 @@ h1 {
   margin-left: 3px;
 }
 
-#point_table_three > p{
+#point_table_three>p>a {
   border-bottom: 2px dashed #34B17D;
   color: #34B17D;
-  cursor: pointer;
 }
 
 .checkbox_point {
@@ -817,9 +875,8 @@ h1 {
 .block_footer {
   width: 70%;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 80%;
+  transform: translate(0, -50%);
   background-color: #fff;
   display: flex;
   justify-content: center;
@@ -844,12 +901,25 @@ h1 {
   font-family:"InterRegular";
 }
 
+.form_add > form > textarea{
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid #818181;
+  border-radius: min(2vw, 24px);
+  padding: min(1.5vw, 24px);
+  margin-bottom: min(1.6vw, 25px);
+  font-size: min(1.5vw, 24px);
+  font-family:"InterRegular";
+}
+
 .form_add > form > label{
   font-size: min(1.5vw, 24px);
   font-family: "InterRegular";
   margin-bottom: min(0.8vw, 10px);
   font-weight: bold;
 }
+
+
 
 .form_add > form{
   display: flex;

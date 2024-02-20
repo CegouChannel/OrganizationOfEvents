@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/events.css">
+    <link rel="stylesheet" href="/css/exhibits.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="js/jquery.maskedinput.min.js"></script>
-    <script src="js/events.js"></script>
+    <script src="js/exhibits.js"></script>
     <title>Айтирум</title>
 </head>
 
@@ -18,15 +18,17 @@
     </div>
     <div name="window_add_person" id="block_footer" class="block_footer" style="display:none;">
         <div class="head_footer">
-            Добавление Мероприятия
+            Добавление экспоната
         </div>
         <div class="form_add">
             <form action="">
-                <label>Название мероприятия</label>
-                <input type="text" name="name">
-                <label>Ответственный</label>
-                <input type="text" name="responsible">
-                <button class="add_cab" name="add_event">ДОБАВИТь МЕРОПРИЯТИЯ</button>
+                <label>Название экспоната</label>
+                <input type="text" name="fio">
+                <label>Дата Создания</label>
+                <input type="text" name="brd">
+                <label>Автор</label>
+                <input type="text" name="special">
+                <button class="add_cab">ДОБАВИТь ЭКСПОНАТ</button>
             </form>
         </div>
     </div>
@@ -35,7 +37,7 @@
             <div class="head_delete">
                 <p>Подтвердите действие на странице</p>
             </div>
-            <p>Вы уверены, что хотите удалить Мероприятие?</p>
+            <p>Вы уверены, что хотите удалить экспонат?</p>
             <div class="buttons_change">
                 <button id="yes_delete">ДА</button>
                 <button id="no_delete">НЕТ</button>
@@ -78,8 +80,8 @@
                     <input type="text" class="search_content_inp" placeholder="Поиск"></input>
                     <div class="line_search_content"></div>
                 </div>
-                <p class="cabinet">Мероприятия</p>
-                <button class="add_comp">ДОБАВИТЬ МЕРОПРИЯТИЕ</button>
+                <p class="cabinet">Экспонаты</p>
+                <button class="add_comp">ДОБАВИТЬ ЭКСПОНАТ</button>
             </div>
             <!-- Пункты таблицы -->
             <div class="points_table">
@@ -91,11 +93,11 @@
                     <img src="img/sort.png" id="settings1">
                 </div>
                 <div class="point_table_two">
-                    <p>Название Мероприятия</p>
+                    <p>Название экспоната</p>
                     <img src="img/sort.png" id="settings1">
                 </div>
                 <div class="point_table_three">
-                    <p>Ответственный</p>
+                    <p>Дата Создания</p>
                     <img src="img/sort.png" id="settings1">
                 </div>
                 <div class="point_table_settings">
@@ -111,10 +113,10 @@
                     <p>1</p>
                 </div>
                 <div class="point_table_two" id="point_table_two">
-                    <p>25.12.2003</p>
+                    <p>Утро в сосновом лесу</p>
                 </div>
                 <div class="point_table_three" id="point_table_three">
-                    <p>Вахрушев Никита Константинович</p>
+                    <p>ИВан Иванович Шишкин</p>
                 </div>
                 <div class="point_table_settings" id="point_table_settings">
                     <img src="img/dot.png">

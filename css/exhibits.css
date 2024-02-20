@@ -470,7 +470,7 @@ h1 {
   height: 35px;
   margin-top: min(2vw, 32px);
   display: grid;
-  grid-template-columns: 0.3fr  0.3fr repeat(2, 1fr) 0.3fr;
+  grid-template-columns: 0.3fr 0.3fr repeat(2, 1fr) 0.3fr;
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
@@ -547,6 +547,23 @@ h1 {
 
 #points_table {
   margin-top: 110px;
+}
+
+#point_table_three>div {
+  display: flex;
+  flex-direction: column;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#point_table_three>div>p {
+  font-family: 'InterRegular';
+  color: #34B17D;
+  font-size: 16px;
+  border-bottom: 1px dashed #34B17D;
+  margin-left: 0px;
+  cursor: pointer;
 }
 
 
@@ -655,10 +672,9 @@ h1 {
   margin-left: 3px;
 }
 
-#point_table_three > p{
+#point_table_three>p>a {
   border-bottom: 2px dashed #34B17D;
   color: #34B17D;
-  cursor: pointer;
 }
 
 .checkbox_point {

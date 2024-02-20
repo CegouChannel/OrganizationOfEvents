@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/events.css">
+    <link rel="stylesheet" href="/css/orders.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="js/jquery.maskedinput.min.js"></script>
-    <script src="js/events.js"></script>
+    <script src="js/orders.js"></script>
     <title>Айтирум</title>
 </head>
 
@@ -16,17 +16,43 @@
     <div class="black_background" style="display:none">
         <img src="./img/close.png" alt="close">
     </div>
-    <div name="window_add_person" id="block_footer" class="block_footer" style="display:none;">
+    <div name="window_about_event" id="block_footer" class="block_footer" style="display:none;">
         <div class="head_footer">
-            Добавление Мероприятия
+            Данные мероприятия
         </div>
         <div class="form_add">
             <form action="">
-                <label>Название мероприятия</label>
-                <input type="text" name="name">
-                <label>Ответственный</label>
-                <input type="text" name="responsible">
-                <button class="add_cab" name="add_event">ДОБАВИТь МЕРОПРИЯТИЯ</button>
+                <label>ФИО</label>
+                <input type="text" name="fio">
+                <label>Номер телефона</label>
+                <input type="text" name="phone">
+                <label>Тип мероприятия</label>
+                <input type="text" name="type_event">
+                <label>Время</label>
+                <input type="text" name="time">
+                <label>Сценарий мероприятия</label>
+                <textarea name="script" cols="30" rows="10"></textarea>
+                <button class="add_cab">ПОДТВЕРДИТЬ</button>
+            </form>
+        </div>
+    </div>
+    <div name="window_add_order" id="block_footer" class="block_footer" style="display:none;">
+        <div class="head_footer">
+            Добавить Заказ
+        </div>
+        <div class="form_add">
+            <form action="">
+                <label>ФИО</label>
+                <input type="text" name="fio">
+                <label>Номер телефона</label>
+                <input type="text" name="phone">
+                <label>Дата</label>
+                <input type="date" name="date">
+                <label>Время</label>
+                <input type="text" name="time">
+                <label>Сценарий мероприятия</label>
+                <textarea name="script" cols="30" rows="10"></textarea>
+                <button class="add_cab">ПОДТВЕРДИТЬ</button>
             </form>
         </div>
     </div>
@@ -35,7 +61,7 @@
             <div class="head_delete">
                 <p>Подтвердите действие на странице</p>
             </div>
-            <p>Вы уверены, что хотите удалить Мероприятие?</p>
+            <p>Вы уверены, что хотите удалить сотрудника ФИО?</p>
             <div class="buttons_change">
                 <button id="yes_delete">ДА</button>
                 <button id="no_delete">НЕТ</button>
@@ -78,8 +104,8 @@
                     <input type="text" class="search_content_inp" placeholder="Поиск"></input>
                     <div class="line_search_content"></div>
                 </div>
-                <p class="cabinet">Мероприятия</p>
-                <button class="add_comp">ДОБАВИТЬ МЕРОПРИЯТИЕ</button>
+                <p class="cabinet">Заказы</p>
+                <button class="add_comp">ДОБАВИТЬ ЗАКАЗ</button>
             </div>
             <!-- Пункты таблицы -->
             <div class="points_table">
@@ -88,18 +114,18 @@
                 </div>
                 <div class="point_table_one">
                     <p>ID</p>
-                    <img src="img/sort.png" id="settings1">
                 </div>
                 <div class="point_table_two">
-                    <p>Название Мероприятия</p>
-                    <img src="img/sort.png" id="settings1">
+                    <p>Заказчик</p>
                 </div>
                 <div class="point_table_three">
-                    <p>Ответственный</p>
-                    <img src="img/sort.png" id="settings1">
+                    <p>Дата и время</p>
                 </div>
-                <div class="point_table_settings">
-                    <img src="img/settings.png">
+                <div class="point_table_three">
+                    <p>Данные Мероприятия</p>
+                </div>
+                <div class="point_table_three">
+                    <p>Действие</p>
                 </div>
             </div>
             <!-- Данные таблицы -->
@@ -111,13 +137,19 @@
                     <p>1</p>
                 </div>
                 <div class="point_table_two" id="point_table_two">
-                    <p>25.12.2003</p>
+                    <p>Алексей Владимирович <br><span>+7-982-822-44-19</span></p>
                 </div>
                 <div class="point_table_three" id="point_table_three">
-                    <p>Вахрушев Никита Константинович</p>
+                    <p>25.12.2024<br><span>13:00 - 18:00</span></p>
+                </div>
+                <div class="point_table_three" id="point_table_three">
+                    <button class="about_order">Подробнее</button>
                 </div>
                 <div class="point_table_settings" id="point_table_settings">
-                    <img src="img/dot.png">
+                    <div class="actions_order">
+                        <button>Принять</button>
+                        <button>Отклонить</button>
+                    </div>
                 </div>
                 <div class="settings_panel" style="display:none">
                     <div class="editFromDB">
