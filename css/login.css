@@ -25,6 +25,10 @@ input {
     display: none;
 }
 
+body{
+  background: #F0F0F0;
+}
+
 .wrapper {
     background-color: #F0F0F0;
     overflow-x: hidden;
