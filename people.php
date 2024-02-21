@@ -1,6 +1,9 @@
+<?php
+session_start();
+require_once("connect.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +14,6 @@
     <script src="js/people.js"></script>
     <title>Айтирум</title>
 </head>
-
 <body>
     <div class="black_background" style="display:none">
         <img src="./img/close.png" alt="close">
@@ -21,7 +23,7 @@
             Добавление Сотрудника
         </div>
         <div class="form_add">
-            <form action="">
+            <form action="addPerson.php" method="POST">
                 <label>ФИО</label>
                 <input type="text" name="fio">
                 <label>Дата Рождения</label>
@@ -30,7 +32,7 @@
                 <input type="text" name="special">
                 <label>Номер Телефона</label>
                 <input type="text" name="phone">
-                <button class="add_cab">ДОБАВИТь СОТРУДНИКА</button>
+                <button name="add_person" class="add_cab">ДОБАВИТь СОТРУДНИКА</button>
             </form>
         </div>
     </div>
@@ -47,23 +49,14 @@
         </div>
         <div class="block_head_right">
             <ul class="nav_menu">
-                <a href="#">
-                    <li>Мероприятия</li>
-                </a>
-                <a href="#">
-                    <li>Выставки</li>
-                </a>
-                <a href="#">
-                    <li>Заказы</li>
-                </a>
-                <a href="#">
+                <a href="/people.php">
                     <li>Сотрудники</li>
                 </a>
-                <a href="#">
-                    <li>Заказчики</li>
+                <a href="/orders.php">
+                    <li>Заказы</li>
                 </a>
-                <a href="#">
-                    <li>Экспонаты</li>
+                <a href="/schedule.php">
+                    <li>Расписание</li>
                 </a>
             </ul>
             <div class="block_head_acc">
@@ -107,37 +100,44 @@
                 </div>
             </div>
             <!-- Данные таблицы -->
-            <div class="points_table" id="points_table1">
-                <div class="checkBox">
-                    <input type="checkbox" class="checkbox_point">
-                </div>
-                <div class="point_table_one" id="point_table_one">
-                    <p>Алексей Владимирович<br><span>+7 982 822 44 19</span></p>
-                </div>
-                <div class="point_table_two" id="point_table_two">
-                    <p>25.12.2003</p>
-                </div>
-                <div class="point_table_three" id="point_table_three">
-                    <p>Актер</p>
-                </div>
-                <div class="point_table_settings" id="point_table_settings">
-                    <img src="img/dot.png">
-                </div>
-                <div class="settings_panel" style="display:none">
-                    <div class="editFromDB">
-                        <img src="img/editing.png">
-                        <p>Редактировать</p>
+            <?php
+            $sql = "SELECT * FROM `workers`";
+            $query = mysqli_query($db, $sql);
+            while($person = mysqli_fetch_assoc($query)){
+                echo '
+                <div class="points_table" id="points_table1">
+                    <div class="checkBox">
+                        <input type="checkbox" class="checkbox_point">
                     </div>
-                    <div>
-                        <img src="img/history 1.png">
-                        <p><a href="history.php">История</a></p>
+                    <div class="point_table_one" id="point_table_one">
+                        <p>' . $person['fio'] . '<br><span> ' . $person['phone'] .'</span></p>
                     </div>
-                    <div class="deleteFromDB">
-                        <img src="img/close 2.png">
-                        <p>Удалить</p>
+                    <div class="point_table_two" id="point_table_two">
+                        <p>' . $person['brd'] . '</p>
                     </div>
-                </div>
-            </div>
+                    <div class="point_table_three" id="point_table_three">
+                        <p>' . $person['special'] . '</p>
+                    </div>
+                    <div class="point_table_settings" id="point_table_settings">
+                        <img src="img/dot.png">
+                    </div>
+                    <div class="settings_panel" style="display:none">
+                        <div class="editFromDB">
+                            <img src="img/editing.png">
+                            <p>Редактировать</p>
+                        </div>
+                        <div>
+                            <img src="img/history 1.png">
+                            <p><a href="history.php">История</a></p>
+                        </div>
+                        <div class="deleteFromDB">
+                            <img src="img/close 2.png">
+                            <p>Удалить</p>
+                        </div>
+                    </div>
+                </div>';
+            }
+            ?>
         </div>
         <!-- Конец данных -->
     </div>

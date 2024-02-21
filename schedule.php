@@ -9,10 +9,10 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/orders.css">
+    <link rel="stylesheet" href="/css/schedule.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="js/jquery.maskedinput.min.js"></script>
-    <script src="js/orders.js"></script>
+    <script src="js/schedule.js"></script>
     <title>Айтирум</title>
 </head>
 
@@ -40,46 +40,12 @@ session_start();
             </form>
         </div>
     </div>
-    <div class="window_change_responsible" style="display:none;">
-        <div class="head_footer">
-        Выберите Ответственного для заказа № <span>1</span>
-        </div>
-        <div class="form_accept_event">
-            <form action="" name="form_add">
-                <select class="responsible_select">
-                <?php
-                $sql = "SELECT * FROM `workers`";
-                $query = mysqli_query($db, $sql);
-                while($person = mysqli_fetch_assoc($query)){
-                ?>
-                    <option value="<?= $person['id']; ?>"><?= $person['fio']; ?></option>
-                <?php    
-                }
-                ?>
-                </select>
-                <button class="add_cab">ПОДТВЕРДИТЬ</button>
-            </form>
-        </div>
-    </div>
-    <div name="window_add_order" id="block_footer" class="block_footer" style="display:none;">
-        <div class="head_footer">
-            Добавить Заказ
-        </div>
-        <div class="form_add">
-            <form action="" name="form_add">
-                <label>ФИО</label>
-                <input type="text" name="fio">
-                <label>Номер телефона</label>
-                <input type="text" name="phone">
-                <label>Дата</label>
-                <input type="date" name="date">
-                <label>Время</label>
-                <input type="text" name="time">
-                <label>Сценарий мероприятия</label>
-                <textarea name="script" cols="30" rows="10"></textarea>
-                <button class="add_cab">ПОДТВЕРДИТЬ</button>
-            </form>
-        </div>
+    <div name="window_info_person" id="block_footer" class="block_info_worker" style="display:none;">
+        <div>Данные сотрудника</div>    
+        <div name="info_fio">ФИО</div>
+        <div name="info_special">Должность</div>
+        <div name="info_brd">Дата рождения</div>
+        <div name="info_phone">Номер телефона</div>
     </div>
     <div class="container">
         <div class="window_sumbit">
@@ -120,8 +86,7 @@ session_start();
                     <input type="text" class="search_content_inp" placeholder="Поиск"></input>
                     <div class="line_search_content"></div>
                 </div>
-                <p class="cabinet">Заказы</p>
-                <button class="add_comp">ДОБАВИТЬ ЗАКАЗ</button>
+                <p class="cabinet">Расписание</p>
             </div>
             <!-- Пункты таблицы -->
             <div class="points_table">
@@ -132,16 +97,16 @@ session_start();
                     <p>ID</p>
                 </div>
                 <div class="point_table_two">
-                    <p>Заказчик</p>
+                    <p>Мероприятие</p>
                 </div>
                 <div class="point_table_three">
-                    <p>Дата и время</p>
+                    <p>Дата</p>
                 </div>
                 <div class="point_table_three">
-                    <p>Данные Мероприятия</p>
+                    <p>Ответственный</p>
                 </div>
-                <div class="point_table_three">
-                    <p>Действие</p>
+                <div class="point_table_settings">
+                    <img src="img/settings.png">
                 </div>
             </div>
             <!-- Данные таблицы -->
@@ -160,26 +125,22 @@ session_start();
                         <p> <?= $event['id'] ?></p>
                     </div>
                     <div class="point_table_two" id="point_table_two">
-                        <p> <?= $event['fio']  ?><br><span> <?= $event['phone'] ?></span></p>
+                        <button class="about_order">Подробнее</button>
                     </div>
                     <div class="point_table_three" id="point_table_three">
                         <p><?= $editDate ?></p>
                     </div>
                     <div class="point_table_three" id="point_table_three">
-                        <button class="about_order">Подробнее</button>
+                        <?php 
+                        $idResponsible = $event['responsible'];
+                        $sql = "SELECT * FROM `workers` WHERE `id` = '$idResponsible'";
+                        $query = mysqli_query($db, $sql);
+                        $person = mysqli_fetch_assoc($query);
+                        echo '<p class="info_worker" name="fio_responsible" id="'.$person['id'].'">'.$person['fio'].'</p>';
+                        ?>
                     </div>
                     <div class="point_table_settings" id="point_table_settings">
-                        <div class="actions_order">
-                            <?php
-                            if($event['status'] == "Новая"){
-                                echo '
-                                <button>Принять</button>
-                                <button>Отклонить</button>';
-                            }else{
-                                echo '<p>'. $event['status'] .'</p>';
-                            }
-                            ?>
-                        </div>
+                        <img src="img/dot.png">
                     </div>
                     <div class="settings_panel" style="display:none">
                         <div class="editFromDB">

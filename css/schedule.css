@@ -156,6 +156,11 @@ h1 {
   padding-left: 38px;
 }
 
+.info_worker{
+  color: #34B17D;
+  text-decoration: underline;
+}
+
 .settings_panel>div>p>a {
   text-decoration: none;
   color: #000000;
@@ -468,10 +473,10 @@ h1 {
 
 
 .points_table {
-  min-height: 35px;
+  height: 35px;
   margin-top: min(2vw, 32px);
   display: grid;
-  grid-template-columns: 0.2fr 0.2fr repeat(3, 0.8fr) 1fr;
+  grid-template-columns: 0.3fr 0.3fr repeat(3, 1fr) 0.3fr;
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
@@ -500,8 +505,13 @@ h1 {
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
+  text-align: center;
+}
+
+.points_table>div>p:not(:last-child) {
   color: #000000;
 }
+
 
 .point_table_one {
   display: flex;
@@ -509,8 +519,8 @@ h1 {
 }
 
 .point_table_two>button {
-  width: 96px;
-  height: 27px;
+  width: min(10vw, 160px);
+  height: min(2vw, 32px);
   background: #34B17D;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
@@ -522,15 +532,9 @@ h1 {
   color: #ffff;
 }
 
-#point_table_two > p > span{
-  font-family: "InterRegular";
-  font-size: min(1vw, 16px);
-}
 
-#point_table_two > p{
-  font-family: "InterRegular";
-  font-size: min(1.3vw, 20px);
-  color: #34B17D;
+.point_table_settings {
+  width: 108px;
 }
 
 .point_table_one>button {
@@ -564,50 +568,13 @@ h1 {
   align-items: center;
 }
 
-#point_table_three > p,
-.actions_order > p{
-  font-size: min(1.4vw, 20px);
-  font-family: "InterRegular";
-  text-align: center;
-}
-
-#point_table_three > p >span{
-  font-size: min(1vw, 16px);
-  color: #AFAFAF;
-  font-family: "InterRegular";
-}
-
-#point_table_three button{
-    width: min(11vw, 178px);
-    height: min(2.3vw, 39px);
-    background-color: #34B17D;
-    color: #fff;
-    font-family: "InterRegular";
-    font-size: min(0.8vw, 12px);
-    border-radius: min(3.9vw, 60px);
-    outline: none;
-    margin-right: min(1vw, 10px);
-}
-
-.actions_order{
-  display: flex;
-  flex-direction: column;
-}
-
-.actions_order button{
-  width: min(11vw, 178px);
-  height: min(2.3vw, 39px);
-  background-color: #34B17D;
-  color: #fff;
-  font-family: "InterRegular";
-  font-size: min(0.8vw, 12px);
-  border-radius: min(3.9vw, 60px);
-  outline: none;
-  margin-bottom: min(1vw, 10px);
-}
-
-.actions_order button:last-child{
-  background-color: #B13C34;
+#point_table_three>div>p {
+  font-family: 'InterRegular';
+  color: #34B17D;
+  font-size: 16px;
+  border-bottom: 1px dashed #34B17D;
+  margin-left: 0px;
+  cursor: pointer;
 }
 
 
@@ -874,20 +841,7 @@ h1 {
   background-color: white;
 }
 
-.block_footer, 
-.window_change_responsible{
-  width: 70%;
-  position: absolute;
-  top: 80%;
-  transform: translate(0, -50%);
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-.window_change_responsible{
+.block_footer {
   width: 70%;
   position: absolute;
   top: 50%;
@@ -900,15 +854,13 @@ h1 {
   align-items: center;
 }
 
-.form_add,
-.form_accept_event {
+.form_add {
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
-.form_add > form > input,
-.form_accept_event > form > select{
+.form_add > form > input{
   width: 100%;
   height: min(3vw, 50px);
   border: 1px solid #818181;
@@ -920,28 +872,25 @@ h1 {
 }
 
 .form_add > form > textarea{
-  width: 100%;
   max-width: 100%;
+  min-width: 100%;
+  width: 100%;
   border: 1px solid #818181;
-  border-radius: min(2vw, 24px);
+  border-radius: min(2vw, 32px);
   padding: min(1.5vw, 24px);
   margin-bottom: min(1.6vw, 25px);
   font-size: min(1.5vw, 24px);
   font-family:"InterRegular";
 }
 
-.form_add > form > label,
-.form_accept_event > form > label{
+.form_add > form > label{
   font-size: min(1.5vw, 24px);
   font-family: "InterRegular";
   margin-bottom: min(0.8vw, 10px);
   font-weight: bold;
 }
 
-
-
-.form_add > form, 
-.form_accept_event > form{
+.form_add > form{
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -1255,6 +1204,54 @@ h1 {
   color: #FFFFFF;
   text-align: start;
   width: 300px;
+}
+
+.block_info_worker{
+  width: 70%;
+  height: min(38vw, 580px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  background-color: #10163A;
+  padding: min(5vw, 80px);
+}
+
+.block_info_worker > div:not(:first-child){
+  font-family: "InterRegular";
+  font-size: min(1.5vw, 24px);
+  color: #fff;
+  text-align: start;
+  border-bottom: 1px solid #858585;
+  height: min(6.25vw, 100px);
+  display: flex;
+  align-items: flex-end;
+}
+
+.block_info_worker > div:not(:first-child){
+  font-family: "InterRegular";
+  font-size: min(1.5vw, 24px);
+  color: #fff;
+  text-align: start;
+  border-bottom: 1px solid #858585;
+  height: min(6.25vw, 100px);
+  display: flex;
+  align-items: flex-end;
+  box-sizing: border-box;
+  padding-bottom: min(1.2vw, 20px);
+}
+
+.block_info_worker > div:first-child{
+  font-family: "InterRegular";
+  font-size: min(1.5vw, 24px);
+  color: #fff;
+  text-align: start;
+  border-bottom: 1px solid #3DD495;
+  height: min(4vw, 100px);
+  text-align: center;
+  font-weight: bold;
 }
 
 @font-face {

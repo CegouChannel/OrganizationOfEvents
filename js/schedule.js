@@ -7,20 +7,43 @@ document.addEventListener("DOMContentLoaded", ()=>{
         black_bg.style.display = "block"
     })
 
-    let button_add_order = document.querySelector(".add_comp")
-    let window_add_order = document.querySelector("div[name='window_add_order']")
-    button_add_order.addEventListener('click', ()=>{
-        window_add_order.style.display = "block"
-        black_bg.style.display = "block"
-    })
+    let window_about_person = document.querySelector("div[name='window_info_person']")
+    $("p[name='fio_responsible']").click(function(event){
+        let window_info_worker = document.querySelector("div[name='window_info_person']")
+        black_bg.style.display = "block";
+        window_info_worker.style.display = "block"
+        let id = $(this).attr("id")
+        event.preventDefault()
+        $.ajax({
+            type: "POST",
+            url: "../addSchedule.php",
+            data: {
+                id: Number(id),
+                getInfoResponsible: "getInfoResponsible"
+            },
+            dataType: "text",
+            success: function (response) {
+                let worker = JSON.parse(response);
+                let fio = document.querySelector("div[name='info_fio']")
+                let special = document.querySelector("div[name='info_special']")
+                let brd = document.querySelector("div[name='info_brd']")
+                let phone = document.querySelector("div[name='info_phone']")
+                console.log(worker.fio)
+                
+                fio.innerHTML = worker.fio
+                special.innerHTML = worker.special
+                brd.innerHTML = worker.brd
+                phone.innerHTML = worker.phone
+            }
+        });
+    });
 
     let close_window = document.querySelector("img[alt='close']")
-    let window_accept = document.querySelector(".window_change_responsible")
+    let window_info_worker = document.querySelector("div[name='window_info_person']")
     close_window.addEventListener("click", ()=>{
         modal_person.style.display = "none"
-        window_add_order.style.display = "none"
         black_bg.style.display = "none"
-        window_accept.style.display = "none";
+        window_info_worker.style.display = "none"
     })
 
     let brd = document.querySelector("input[name='brd']")
@@ -29,6 +52,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     $(".about_order").click(function(event){
         let id = $(this).parent().parent().children(".point_table_one").children("p").text();
+        console.log(id);
         event.preventDefault();
         $.ajax({
             type: "POST",
@@ -60,55 +84,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
         });
     });
 
-    $(".actions_order > button").click(function(event){
-        let id = $(this).parent().parent().parent().children(".point_table_one").children("p").text()
-        event.preventDefault();
-        if($(this).text() == "Принять"){
-            let window_accept = document.querySelector(".window_change_responsible")
-            window_accept.style.display = "block";
-            let black_bg = document.querySelector(".black_background")
-            black_bg.style.display = "block"
-            
-            $(".form_accept_event").click(function(event){
-                let selectResp = document.querySelector(".responsible_select").value
-                event.preventDefault();
-                $.ajax({
-                    type: "POST",
-                    url: "../addOrders.php",
-                    data: {
-                        id: id.trim(),
-                        action: "Принять",
-                        responsibleID: selectResp,
-                        actionOrder: "actionOrder",
-                    },
-                    dataType: "text",
-                    success: function (response) {
-                        console.log(response)
-                        window_accept.style.display = "none";
-                        let black_bg = document.querySelector(".black_background")
-                        black_bg.style.display = "none"
-                        let block_settings = document.querySelector(".actions_order")
-                        block_settings.innerHTML = `<p>Принято</p>`
-                    }
-                });
-            });
-        }else{
-            $.ajax({
-                type: "POST",
-                url: "../addOrders.php",
-                data: {
-                    id: id,
-                    action: "Отклонить",
-                    actionOrder: "actionOrder"
-                },
-                dataType: "text",
-                success: function (response) {
-                    let block_settings = document.querySelector(".actions_order")
-                    block_settings.innerHTML = '<p>Отклонено</p>'
-                }
-            });
-        }
-    });
 
     $(function () {
         $('#number-roomInput').focus(function () {
